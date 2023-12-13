@@ -3,10 +3,6 @@ const { v4: uuidv4 } = require('uuid');
 class Product {
     //Implementar un constructor que inicializa products cómo un arreglo vacío
     constructor(title, description, price, thumbnail, code, stock) {
-        if (!title || !description || !price || !thumbnail || !code || !stock) {
-            //Asegurar que todas las propiedades del producto son obligatorias
-            throw new Error("Todos los campos del producto son obligatorios");
-        }
 
         this.id = uuidv4(); // Generar un ID único
         this.title = title;
@@ -27,6 +23,11 @@ class ProductManager {
         // Verificar si el código ya existe
         if (this.products.some(p => p.code === product.code)) {
             throw new Error("El código del producto ya existe");
+        }
+
+        if (!product.title || !product.description || !product.price || !product.thumbnail || !product.code || !product.stock) {
+            //Asegurar que todas las propiedades del producto son obligatorias
+            throw new Error("Todos los campos del producto son obligatorios");
         }
 //Añadir un id único y autoincrementable al producto cuando se agregue a products
         this.products.push(product);
@@ -78,7 +79,7 @@ const newProduct = new Product(
     "Este es un producto prueba",
     200,
     "Sin imagen",
-    "abc123",
+    "",
     25
 );
 try {
