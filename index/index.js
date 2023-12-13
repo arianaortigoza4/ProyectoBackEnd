@@ -81,10 +81,17 @@ const newProduct = new Product(
     "abc123",
     25
 );
-productManager.addProduct(newProduct);
+try {
+    productManager.addProduct(newProduct);
+    console.log("Producto agregado:", newProduct);
+} catch (error) {
+    console.error("Error al agregar producto:", error.message);
+}
+
+// Llamar al método getProducts nuevamente, esta vez debe aparecer el producto recién agregado
 console.log("Productos después de agregar uno:", productManager.getProducts());
 
-// Llamar al método getProductById
+// Llamar al método getProductById y corroborar que devuelva el producto con el id especificado
 try {
     const productFound = productManager.getProductById(newProduct.id);
     console.log("Producto encontrado por ID:", productFound);
@@ -92,7 +99,7 @@ try {
     console.error("Error al buscar producto por ID:", error.message);
 }
 
-// Llamar al método updateProduct
+// Llamar al método updateProduct y cambiar un campo del producto
 try {
     productManager.updateProduct(newProduct.id, { price: 250 });
     console.log("Producto actualizado:", productManager.getProductById(newProduct.id));
@@ -100,12 +107,10 @@ try {
     console.error("Error al actualizar producto:", error.message);
 }
 
-// Llamar al método deleteProduct
+// Llamar al método deleteProduct y evaluar que realmente se elimine el producto
 try {
     productManager.deleteProduct(newProduct.id);
     console.log("Producto eliminado. Productos restantes:", productManager.getProducts());
 } catch (error) {
     console.error("Error al eliminar producto:", error.message);
 }
-
-
