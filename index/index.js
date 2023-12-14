@@ -1,4 +1,10 @@
 const { v4: uuidv4 } = require('uuid');
+const fs = require('fs');
+
+function generarNumRandom(min,max){
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
 
 class Product {
     //Implementar un constructor que inicializa products cómo un arreglo vacío
@@ -15,9 +21,26 @@ class Product {
 }
 
 class ProductManager {
-    constructor() {
-        this.products = [];
+    constructor(filePath) {
+        this.filePath = filePath;
+        this.products = this.loadProducts();
     }
+
+    loadProducts() {
+        try {
+          const data = fs.readFileSync(this.filePath, 'utf8');
+          return JSON.parse(data);
+        } catch (error) {
+          // Si el archivo no existe o hay un error, se devuelve un arreglo vacío.
+          return [];
+        }
+      }
+
+      saveProducts() {
+        fs.writeFileSync(this.filePath, JSON.stringify(this.products, null, 2), 'utf8');
+      }
+
+
 //Implementar el método addProduct que agrega un producto a products
     addProduct(product) {
         // Verificar si el código ya existe
@@ -31,6 +54,8 @@ class ProductManager {
         }
 //Añadir un id único y autoincrementable al producto cuando se agregue a products
         this.products.push(product);
+
+        this.saveProducts();
     }
 //Implementar el método getProducts que devuelve el arreglo products
     getProducts() {
@@ -54,6 +79,7 @@ class ProductManager {
 
         // Mantener el id y actualizar otros campos
         this.products[productIndex] = { ...this.products[productIndex], ...updatedFields };
+        this.saveProducts();
     }
 
     deleteProduct(productId) {
@@ -64,30 +90,46 @@ class ProductManager {
 
         // Eliminar el producto
         this.products.splice(productIndex, 1);
+        this.saveProducts();
     }
 }
 
 // Crear una instancia de ProductManager
-const productManager = new ProductManager();
+const productManager = new ProductManager('products.json');
 
 // Llamar a getProducts, debe devolver un arreglo vacío []
 console.log("Productos al inicio:", productManager.getProducts());
 
-// Agregar un producto con addProduct
-const newProduct = new Product(
-    "producto prueba",
-    "Este es un producto prueba",
-    200,
-    "Sin imagen",
-    "",
-    25
-);
-try {
-    productManager.addProduct(newProduct);
-    console.log("Producto agregado:", newProduct);
-} catch (error) {
-    console.error("Error al agregar producto:", error.message);
-}
+
+
+const array = ['producto prueba 1','producto prueba 2','producto prueba 3','producto prueba 4']
+
+let newProduct
+array.forEach((producto) => {
+    
+    // Agregar un producto con addProduct
+    newProduct = new Product(
+        producto,
+        "Este es un producto prueba",
+        200,
+        "Sin imagen",
+        generarNumRandom(1,1000),
+        25
+    );
+    // COMIENZO DE TEST
+    try {
+        productManager.addProduct(newProduct);
+        console.log("Producto agregado:", newProduct);
+    } catch (error) {
+        console.error("Error al agregar producto:", error.message);
+    }
+
+  });
+
+
+
+
+
 
 // Llamar al método getProducts nuevamente, esta vez debe aparecer el producto recién agregado
 console.log("Productos después de agregar uno:", productManager.getProducts());

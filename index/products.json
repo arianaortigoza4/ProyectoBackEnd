@@ -1,2 +1,56 @@
-
-   
+[
+  {
+    "id": "69ad2e26-caf6-43cf-9c13-041b1635c24c",
+    "title": "producto prueba 1",
+    "description": "Este es un producto prueba",
+    "price": 200,
+    "thumbnail": "Sin imagen",
+    "code": 1,
+    "stock": 25
+  },
+  {
+    "id": "b94db4bd-2803-4c4c-8f1d-acbf7f85767a",
+    "title": "producto prueba 2",
+    "description": "Este es un producto prueba",
+    "price": 200,
+    "thumbnail": "Sin imagen",
+    "code": 2,
+    "stock": 25
+  },
+  {
+    "id": "6ee63880-3a44-4e13-a625-694694b60633",
+    "title": "producto prueba 3",
+    "description": "Este es un producto prueba",
+    "price": 200,
+    "thumbnail": "Sin imagen",
+    "code": 3,
+    "stock": 25
+  },
+  {
+    "id": "30176f8a-c1af-4ee1-b132-1397d7521460",
+    "title": "producto prueba 1",
+    "description": "Este es un producto prueba",
+    "price": 200,
+    "thumbnail": "Sin imagen",
+    "code": 828,
+    "stock": 25
+  },
+  {
+    "id": "e47df6f7-46ec-43ab-bc48-9f0a66e1c4ec",
+    "title": "producto prueba 2",
+    "description": "Este es un producto prueba",
+    "price": 200,
+    "thumbnail": "Sin imagen",
+    "code": 505,
+    "stock": 25
+  },
+  {
+    "id": "185b20e2-cf75-40d8-895b-873e869358f8",
+    "title": "producto prueba 3",
+    "description": "Este es un producto prueba",
+    "price": 200,
+    "thumbnail": "Sin imagen",
+    "code": 835,
+    "stock": 25
+  }
+]
