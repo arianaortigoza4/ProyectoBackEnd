@@ -1,6 +1,7 @@
 const { v4: uuidv4 } = require('uuid');
-const fs = require('fs');
+const fs = require('fs').promises; // Uso fs.promises
 const express = require('express');
+const router = require('express-promise-router')(); // Uso express-promise-router
 
 function generarNumRandom(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -21,23 +22,51 @@ class Product {
 class ProductManager {
     constructor(filePath) {
         this.filePath = filePath;
-        this.products = this.loadProducts();
+        this.loadProducts();
     }
 
-    loadProducts() {
+    async loadProducts() {
         try {
-            const data = fs.readFileSync(this.filePath, 'utf8');
-            return JSON.parse(data);
+            const data = await fs.readFile(this.filePath, 'utf8');
+            this.products = JSON.parse(data);
+            if (!Array.isArray(this.products) || this.products.length < 10) {
+                throw new Error("El archivo no contiene al menos 10 productos");
+            }
         } catch (error) {
-            return [];
+            this.products = [];
+
+            // Generar productos de ejemplo si no hay suficientes
+            while (this.products.length < 10) {
+                const newProduct = new Product(
+                    `Producto ${this.products.length + 1}`,
+                    "Este es un producto de ejemplo",
+                    200,
+                    "Sin imagen",
+                    generarNumRandom(1, 1000),
+                    25
+                );
+                this.products.push(newProduct);
+            }
+
+            // Guardar productos generados
+            try {
+                await this.saveProducts();
+            } catch (saveError) {
+                console.error("Error al guardar productos:", saveError.message);
+            }
         }
     }
 
-    saveProducts() {
-        fs.writeFileSync(this.filePath, JSON.stringify(this.products, null, 2), 'utf8');
+    async saveProducts() {
+        try {
+            await fs.writeFile(this.filePath, JSON.stringify(this.products, null, 2), 'utf8');
+        } catch (error) {
+            console.error("Error al guardar productos:", error.message);
+            throw error;
+        }
     }
 
-    addProduct(product) {
+    async addProduct(product) {
         if (this.products.some(p => p.code === product.code)) {
             throw new Error("El código del producto ya existe");
         }
@@ -47,7 +76,11 @@ class ProductManager {
         }
 
         this.products.push(product);
-        this.saveProducts();
+        try {
+            await this.saveProducts();
+        } catch (saveError) {
+            console.error("Error al guardar productos:", saveError.message);
+        }
     }
 
     getProducts() {
@@ -61,86 +94,41 @@ class ProductManager {
         }
         return product;
     }
-
-   /* updateProduct(productId, updatedFields) {
-        const productIndex = this.products.findIndex(p => p.id === productId);
-        if (productIndex === -1) {
-            throw new Error("Producto no encontrado");
-        }
-
-        this.products[productIndex] = { ...this.products[productIndex], ...updatedFields };
-        this.saveProducts();
-    }
-
-    deleteProduct(productId) {
-        const productIndex = this.products.findIndex(p => p.id === productId);
-        if (productIndex === -1) {
-            throw new Error("Producto no encontrado");
-        }
-
-        this.products.splice(productIndex, 1);
-        this.saveProducts();
-    }*/
 }
 
 const productManager = new ProductManager('products.json');
 
-const app = express();
-const port = 8080;
-
-app.use(express.json());
-
-app.get('/products', (req, res) => {
+router.get('/products', async (req, res) => {
     const limit = req.query.limit;
-    if (limit) {
-        res.json(productManager.getProducts().slice(0, limit));
-    } else {
-        res.json(productManager.getProducts());
+    try {
+        await productManager.loadProducts();
+        const products = limit ? productManager.getProducts().slice(0, limit) : productManager.getProducts();
+        res.json(products);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
     }
 });
 
-app.get('/products/:id', (req, res) => {
+router.get('/products/:id', async (req, res) => {
     const productId = req.params.id;
     try {
         const product = productManager.getProductById(productId);
         res.json(product);
     } catch (error) {
-        res.status(404).json({ error: "Producto no encontrado" });
+        res.status(404).json({ error: error.message });
     }
 });
+
+const app = express();
+const port = 8080;
+
+app.use(express.json());
+app.use('/', router); // Utilizamos el enrutador con rutas asíncronas
 
 app.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`);
 });
 
-const array = ['producto prueba 1', 'producto prueba 2', 'producto prueba 3', 'producto prueba 4', 'producto prueba 5', 'producto prueba 6', 'producto prueba 7', 'producto prueba 8', 'producto prueba 9', 'producto prueba 10'];
-
-let newProduct;
-array.forEach((producto) => {
-    newProduct = new Product(
-        producto,
-        "Este es un producto prueba",
-        200,
-        "Sin imagen",
-        generarNumRandom(1, 1000),
-        25
-    );
-    try {
-        productManager.addProduct(newProduct);
-        console.log("Producto agregado:", newProduct);
-    } catch (error) {
-        console.error("Error al agregar producto:", error.message);
-    }
-});
-
-console.log("Productos después de agregar uno:", productManager.getProducts());
-
-try {
-    const productFound = productManager.getProductById(newProduct.id);
-    console.log("Producto encontrado por ID:", productFound);
-} catch (error) {
-    console.error("Error al buscar producto por ID:", error.message);
-}
 
 /*try {
     productManager.updateProduct(newProduct.id, { price: 250 });
