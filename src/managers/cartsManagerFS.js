@@ -72,6 +72,24 @@ class CartsManagerFS {
         }
         
     }
+    async deleteCart(cid){
+        try {
+            const carts = await this.readFile()
+            const cartIdx = carts.findIndex(cart => cart.id=== cid)
+
+            if(cartIdx === -1){
+                return 'no existe el carrito'
+            }else{   
+                carts.splice(cartIdx, 1);
+            }
+
+            await fs.writeFile(this.path, JSON.stringify(carts, null, 2), 'utf-8')
+            return carts
+        } catch (error) {
+           return "error"
+        }
+        
+    }
     async addProductToCart(cid, pid){
         try {
             const carts = await this.readFile()

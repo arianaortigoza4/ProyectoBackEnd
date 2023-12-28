@@ -43,7 +43,18 @@ router
         } catch (error) {
             console.log(error)
         }
-        // res.send('get cart')
+    })
+    .delete('/:cid', async (req, res)=>{
+        try {
+            const {cid} = req.params
+            const result = await cartsService.deleteCart(parseInt(cid))
+            res.send({
+                status: 'success',
+                payload: result
+            })
+        } catch (error) {
+            console.log(error)
+        }
     })
     .post('/:cid/products/:pid', async (req, res)=>{
         try {

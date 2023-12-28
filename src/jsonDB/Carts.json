@@ -91,19 +91,6 @@
     "quantity": 0
   },
   {
-    "id": 8,
-    "products": [],
-    "title": "",
-    "description": "",
-    "code": 0,
-    "price": 0,
-    "status": true,
-    "stock": 0,
-    "category": "",
-    "thumbnails": "",
-    "quantity": 0
-  },
-  {
     "id": 9,
     "products": [],
     "title": "",
@@ -120,24 +107,6 @@
     "id": 10,
     "products": [],
     "title": "Ejemplo1",
-    "description": "Descripción de ejemplo",
-    "code": "123",
-    "price": 19.99,
-    "status": true,
-    "stock": 50,
-    "category": "EjemploCategory",
-    "thumbnails": "https://ejemplo.com/thumbnail.jpg",
-    "quantity": 1
-  },
-  {
-    "id": 11,
-    "products": [
-      {
-        "product": 547,
-        "quantity": 1
-      }
-    ],
-    "title": "Ejemplo11",
     "description": "Descripción de ejemplo",
     "code": "123",
     "price": 19.99,
