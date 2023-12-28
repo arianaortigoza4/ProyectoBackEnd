@@ -57,30 +57,18 @@ class CartsManagerFS {
 
             if(cartIdx === -1){
                 return 'no existe el carrito'
-            }
-            // parado en         
-            const productIdx = carts[cartIdx].products.findIndex(produc => produc.product === pid)
-            if(productIdx === -1){    
-                return 'no existe el carrito'        
-                
             }else{            
-                carts[cartIdx].products.push({
-                    title: "Ejemplo",
-                    description: "Descripción de ejemplo",
-                    code: "123",
-                    price: 19.99,
-                    status: true,
-                    stock: 50,
-                    category: "EjemploCategory",
-                    thumbnails: "https://ejemplo.com/thumbnail.jpg",
-                    quantity: 1
-                })
+                for (const prop in data) {
+                    if (data.hasOwnProperty(prop)) {
+                        carts[cartIdx][prop] = data[prop];
+                    }
+                }
             }
 
             await fs.writeFile(this.path, JSON.stringify(carts, null, 2), 'utf-8')
             return carts[cartIdx]
         } catch (error) {
-           return error
+           return "error"
         }
         
     }
