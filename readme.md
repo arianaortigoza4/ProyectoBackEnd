@@ -1,5 +1,8 @@
 # Descripción del 4to desafio (corresponde al commit "Ultima funcion GET funcionando"):
 
+# IMPORTANTE 
+* Lo que entendi es que en el metodo GET de http://localhost:8080/api/cart se tiene que traer todos los productos, en el enunciado no especifica si se tiene que usar http://localhost:8080/products como en el desafio anterior por eso lo hice de esa manera, de todas formas funciona pero con la api/cart. 
+
 # ¿Que hace el codigo? 
 * Crear un nuevo carrito vacío con un nuevo ID:
 
@@ -43,5 +46,3 @@ Método: POST
 Endpoint: http://localhost:8080/api/carts/14/products/547
 Acción:
 Agrega un nuevo producto con ID 547 al carrito con ID 14.  
-# IMPORTANTE 
-* Lo que entendi es que en el metodo GET de http://localhost:8080/api/cart se tiene que traer todos los productos, en el enunciado no especifica si se tiene que usar http://localhost:8080/products como en el desafio anterior por eso lo hice de esa manera, de todas formas funciona pero con la api/cart. 
