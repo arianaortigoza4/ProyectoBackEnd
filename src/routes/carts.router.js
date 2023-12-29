@@ -18,6 +18,19 @@ router
         }
         // res.send('create carts')
     })
+    .get('/', async (req, res)=>{
+        try {
+            const limit = req.query.limit;
+            const result = await cartsService.getCart(parseInt(limit))
+            console.log(result)
+            res.send({
+                stauts: 'success',
+                payload: result
+            })
+        } catch (error) {
+            res.status(500).send(`Error de server ${error.message}`)
+        }
+    })
     .get('/:cid', async (req, res)=>{
         try {
             const {cid} = req.params

@@ -1,5 +1,13 @@
 ### Te genera un nuevo producto vacio con un nuevo id
 POST http://localhost:8080/api/carts
+
+### Te trae todos los productos
+GET http://localhost:8080/api/carts
+
+### Te trae todos los productos hasta un limite
+GET http://localhost:8080/api/carts?limit=8
+
+
 ### Consulta por un id especifico y te devuelve el producto
 GET http://localhost:8080/api/carts/14
 ### Consulta por un id especifico y te devuelve el producto

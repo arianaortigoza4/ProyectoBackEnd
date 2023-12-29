@@ -37,6 +37,27 @@ class CartsManagerFS {
             return `Error al crear un carts ${error}`
         }
     }
+    async getCart(limit = null) {
+        try {
+            const carts = await this.readFile();
+    
+            if (!carts || carts.length === 0) {
+                return 'Carrito vacío';
+            }
+    
+            // Si se proporciona un límite, devuelve solo los primeros N carritos
+            if (limit !== null && typeof limit === 'number') {
+                let resultado = carts.slice(0, limit)
+                console.log("RESULT = " + resultado)
+                return resultado;
+            }
+    
+            return carts;
+        } catch (error) {
+            console.error('Error en getCart:', error);
+            return 'Error al obtener carritos';
+        }
+    }
     async getCartById(cid){
         try {
             const carts = await this.readFile()
