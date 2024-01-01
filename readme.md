@@ -1,5 +1,8 @@
 # Descripción del 4to desafio (corresponde al commit "Solucionado el id duplicado2"):
 
+# Ayuda
+En este proyecto no puede modificar el node_modules ya que al estar duplicadas no se cual borrar. ¿Alguna recomendacion para el proximo proyecto?
+
 # Rutas de Carts
 * Crear un nuevo carrito:
 
