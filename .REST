@@ -8,15 +8,6 @@ GET http://localhost:8080/api/carts/11
 POST http://localhost:8080/api/carts/11/products/560
 
 
-
-
-
-
-
-
-
-
-
 ##          Rutas de Products          ##
 
 
