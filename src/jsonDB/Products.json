@@ -11,6 +11,17 @@
     "thumbnails": ""
   },
   {
+    "id": 2,
+    "title": "",
+    "description": "",
+    "code": 0,
+    "price": 0,
+    "status": true,
+    "stock": 0,
+    "category": "",
+    "thumbnails": ""
+  },
+  {
     "id": 3,
     "title": "",
     "description": "",
@@ -44,17 +55,6 @@
     "thumbnails": ""
   },
   {
-    "id": 6,
-    "title": "",
-    "description": "",
-    "code": 0,
-    "price": 0,
-    "status": true,
-    "stock": 0,
-    "category": "",
-    "thumbnails": ""
-  },
-  {
     "id": 7,
     "title": "",
     "description": "",
@@ -77,26 +77,37 @@
     "thumbnails": ""
   },
   {
-    "id": 10,
-    "title": "Ejemplo14",
-    "description": "Descripción de ejemplo",
-    "code": "1234",
-    "price": 19.99,
+    "id": 9,
+    "title": "",
+    "description": "",
+    "code": 0,
+    "price": 0,
     "status": true,
-    "stock": 50,
-    "category": "EjemploCategory",
-    "thumbnails": "https://ejemplo.com/thumbnail.jpg"
+    "stock": 0,
+    "category": "",
+    "thumbnails": ""
+  },
+  {
+    "id": 10,
+    "title": "",
+    "description": "",
+    "code": 0,
+    "price": 0,
+    "status": true,
+    "stock": 0,
+    "category": "",
+    "thumbnails": ""
   },
   {
     "id": 11,
-    "title": "Ejemplo14",
-    "description": "Descripción de ejemplo",
-    "code": "1234",
-    "price": 19.99,
+    "title": "",
+    "description": "",
+    "code": 0,
+    "price": 0,
     "status": true,
-    "stock": 50,
-    "category": "EjemploCategory",
-    "thumbnails": "https://ejemplo.com/thumbnail.jpg"
+    "stock": 0,
+    "category": "",
+    "thumbnails": ""
   },
   {
     "id": 12,
@@ -143,6 +154,17 @@
     "thumbnails": ""
   },
   {
+    "id": 16,
+    "title": "",
+    "description": "",
+    "code": 0,
+    "price": 0,
+    "status": true,
+    "stock": 0,
+    "category": "",
+    "thumbnails": ""
+  },
+  {
     "id": 17,
     "title": "Ejemplo17",
     "description": "Descripción de ejemplo",
@@ -152,17 +174,6 @@
     "stock": 50,
     "category": "EjemploCategory",
     "thumbnails": "https://ejemplo.com/thumbnail.jpg"
-  },
-  {
-    "id": 17,
-    "title": "",
-    "description": "",
-    "code": 0,
-    "price": 0,
-    "status": true,
-    "stock": 0,
-    "category": "",
-    "thumbnails": ""
   },
   {
     "id": 18,
@@ -198,17 +209,6 @@
     "thumbnails": ""
   },
   {
-    "id": 20,
-    "title": "",
-    "description": "",
-    "code": 0,
-    "price": 0,
-    "status": true,
-    "stock": 0,
-    "category": "",
-    "thumbnails": ""
-  },
-  {
     "id": 21,
     "title": "",
     "description": "",
@@ -221,17 +221,6 @@
   },
   {
     "id": 22,
-    "title": "",
-    "description": "",
-    "code": 0,
-    "price": 0,
-    "status": true,
-    "stock": 0,
-    "category": "",
-    "thumbnails": ""
-  },
-  {
-    "id": 23,
     "title": "",
     "description": "",
     "code": 0,

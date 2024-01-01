@@ -27,7 +27,7 @@ GET http://localhost:8080/api/products
 ### Te trae todos los productos hasta un limite
 GET http://localhost:8080/api/products?limit=5
 ### Consulta por un id especifico y te devuelve el producto
-GET http://localhost:8080/api/products/10
+GET http://localhost:8080/api/products/17
 ### Consulta por un id especifico y te devuelve el producto
 PUT http://localhost:8080/api/products/17
 Content-Type: application/json
@@ -44,4 +44,4 @@ Content-Type: application/json
 }
 
 ### Elimino un producto existente
-DELETE http://localhost:8080/api/products/9
+DELETE http://localhost:8080/api/products/6
