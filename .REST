@@ -31,3 +31,40 @@ DELETE http://localhost:8080/api/carts/2
 
 ### agrego un nuevo producto al id existente
 POST http://localhost:8080/api/carts/14/products/547
+
+
+
+
+
+
+
+
+
+
+
+
+### Te genera un nuevo producto vacio con un nuevo id
+POST http://localhost:8080/api/products
+### Te trae todos los productos
+GET http://localhost:8080/api/products
+### Te trae todos los productos hasta un limite
+GET http://localhost:8080/api/products?limit=5
+### Consulta por un id especifico y te devuelve el producto
+GET http://localhost:8080/api/products/10
+### Consulta por un id especifico y te devuelve el producto
+PUT http://localhost:8080/api/products/11
+Content-Type: application/json
+
+{
+  "title": "Ejemplo14",
+  "description": "Descripción de ejemplo",
+  "code": "1234",
+  "price": 19.99,
+  "status": true,
+  "stock": 50,
+  "category": "EjemploCategory",
+  "thumbnails": "https://ejemplo.com/thumbnail.jpg"
+}
+
+### Elimino un producto existente
+DELETE http://localhost:8080/api/products/17

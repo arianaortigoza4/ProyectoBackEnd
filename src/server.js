@@ -1,6 +1,7 @@
 const express = require('express')
 const usersRouter = require('./routes/users.router.js')
 const cartsRouter = require('./routes/carts.router.js')
+const productsRouter = require('./routes/products.router.js')
 const handlebars  = require('express-handlebars')
 const { Server: ServerIO, Server }  = require('socket.io') 
 
@@ -21,7 +22,7 @@ app.get('/', (req,res)=>{
 })
 app.use('/api/users',    usersRouter)
 app.use('/api/carts',    cartsRouter)
-// app.use('/api/products', ()=>{})
+app.use('/api/products', productsRouter)
 
 
 const httpServer =  app.listen(8080, ()=>{
