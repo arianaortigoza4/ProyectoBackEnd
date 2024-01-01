@@ -1,228 +1,88 @@
 [
   {
     "id": 1,
-    "products": [],
-    "title": "",
-    "description": "",
-    "code": 0,
-    "price": 0,
-    "status": true,
-    "stock": 0,
-    "category": "",
-    "thumbnails": "",
-    "quantity": 0
+    "products": []
   },
   {
     "id": 2,
-    "products": [],
-    "title": "",
-    "description": "",
-    "code": 0,
-    "price": 0,
-    "status": true,
-    "stock": 0,
-    "category": "",
-    "thumbnails": "",
-    "quantity": 0
+    "products": []
   },
   {
     "id": 3,
-    "products": [],
-    "title": "",
-    "description": "",
-    "code": 0,
-    "price": 0,
-    "status": true,
-    "stock": 0,
-    "category": "",
-    "thumbnails": "",
-    "quantity": 0
+    "products": []
   },
   {
     "id": 4,
-    "products": [],
-    "title": "",
-    "description": "",
-    "code": 0,
-    "price": 0,
-    "status": true,
-    "stock": 0,
-    "category": "",
-    "thumbnails": "",
-    "quantity": 0
-  },
-  {
-    "id": 5,
-    "products": [],
-    "title": "",
-    "description": "",
-    "code": 0,
-    "price": 0,
-    "status": true,
-    "stock": 0,
-    "category": "",
-    "thumbnails": "",
-    "quantity": 0
-  },
-  {
-    "id": 7,
-    "products": [],
-    "title": "",
-    "description": "",
-    "code": 0,
-    "price": 0,
-    "status": true,
-    "stock": 0,
-    "category": "",
-    "thumbnails": "",
-    "quantity": 0
-  },
-  {
-    "id": 9,
-    "products": [],
-    "title": "",
-    "description": "",
-    "code": 0,
-    "price": 0,
-    "status": true,
-    "stock": 0,
-    "category": "",
-    "thumbnails": "",
-    "quantity": 0
-  },
-  {
-    "id": 10,
-    "products": [],
-    "title": "Ejemplo1",
-    "description": "Descripción de ejemplo",
-    "code": "123",
-    "price": 19.99,
-    "status": true,
-    "stock": 50,
-    "category": "EjemploCategory",
-    "thumbnails": "https://ejemplo.com/thumbnail.jpg",
-    "quantity": 1
-  },
-  {
-    "id": 12,
-    "products": [],
-    "title": "",
-    "description": "",
-    "code": 0,
-    "price": 0,
-    "status": true,
-    "stock": 0,
-    "category": "",
-    "thumbnails": "",
-    "quantity": 0
-  },
-  {
-    "id": 13,
-    "products": [],
-    "title": "Ejemplo13",
-    "description": "Descripción de ejemplo",
-    "code": "123",
-    "price": 19.99,
-    "status": true,
-    "stock": 50,
-    "category": "EjemploCategory",
-    "thumbnails": "https://ejemplo.com/thumbnail.jpg",
-    "quantity": 1
-  },
-  {
-    "id": 14,
     "products": [
       {
         "product": 547,
-        "quantity": 2
+        "quantity": 5
+      },
+      {
+        "product": 548,
+        "quantity": 6
+      },
+      {
+        "product": 549,
+        "quantity": 4
       }
-    ],
-    "title": "Ejemplo14",
-    "description": "Descripción de ejemplo",
-    "code": "1234",
-    "price": 19.99,
-    "status": true,
-    "stock": 50,
-    "category": "EjemploCategory",
-    "thumbnails": "https://ejemplo.com/thumbnail.jpg",
-    "quantity": 1
+    ]
   },
   {
-    "id": 15,
-    "products": [],
-    "title": "",
-    "description": "",
-    "code": 0,
-    "price": 0,
-    "status": true,
-    "stock": 0,
-    "category": "",
-    "thumbnails": "",
-    "quantity": 0
+    "id": 5,
+    "products": []
+  },
+  {
+    "id": 6,
+    "products": []
+  },
+  {
+    "id": 7,
+    "products": []
+  },
+  {
+    "id": 8,
+    "products": []
+  },
+  {
+    "id": 9,
+    "products": []
+  },
+  {
+    "id": 10,
+    "products": []
+  },
+  {
+    "id": 11,
+    "products": [
+      {
+        "product": 549,
+        "quantity": 3
+      },
+      {
+        "product": 550,
+        "quantity": 12
+      },
+      {
+        "product": 560,
+        "quantity": 5
+      }
+    ]
+  },
+  {
+    "id": 12,
+    "products": []
+  },
+  {
+    "id": 13,
+    "products": []
   },
   {
     "id": 14,
-    "products": [],
-    "title": "",
-    "description": "",
-    "code": 0,
-    "price": 0,
-    "status": true,
-    "stock": 0,
-    "category": "",
-    "thumbnails": "",
-    "quantity": 0
+    "products": []
   },
   {
     "id": 15,
-    "products": [],
-    "title": "",
-    "description": "",
-    "code": 0,
-    "price": 0,
-    "status": true,
-    "stock": 0,
-    "category": "",
-    "thumbnails": "",
-    "quantity": 0
-  },
-  {
-    "id": 15,
-    "products": [],
-    "title": "",
-    "description": "",
-    "code": 0,
-    "price": 0,
-    "status": true,
-    "stock": 0,
-    "category": "",
-    "thumbnails": "",
-    "quantity": 0
-  },
-  {
-    "id": 16,
-    "products": [],
-    "title": "",
-    "description": "",
-    "code": 0,
-    "price": 0,
-    "status": true,
-    "stock": 0,
-    "category": "",
-    "thumbnails": "",
-    "quantity": 0
-  },
-  {
-    "id": 17,
-    "products": [],
-    "title": "",
-    "description": "",
-    "code": 0,
-    "price": 0,
-    "status": true,
-    "stock": 0,
-    "category": "",
-    "thumbnails": "",
-    "quantity": 0
+    "products": []
   }
 ]

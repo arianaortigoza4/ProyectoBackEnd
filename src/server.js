@@ -1,5 +1,4 @@
 const express = require('express')
-const usersRouter = require('./routes/users.router.js')
 const cartsRouter = require('./routes/carts.router.js')
 const productsRouter = require('./routes/products.router.js')
 const handlebars  = require('express-handlebars')
@@ -20,7 +19,6 @@ app.set('view engine', 'handlebars')
 app.get('/', (req,res)=>{
     res.render('index', {} )
 })
-app.use('/api/users',    usersRouter)
 app.use('/api/carts',    cartsRouter)
 app.use('/api/products', productsRouter)
 

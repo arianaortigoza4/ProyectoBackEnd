@@ -19,43 +19,13 @@ class CartsManagerFS {
             const carts = await this.readFile()
             let newCart = {
                 id: carts.length + 1,
-                products : [],
-                title: "",
-                description: "",
-                code: 0,
-                price: 0,
-                status: true,
-                stock: 0,
-                category: "",
-                thumbnails: "",
-                quantity: 0
+                products : []
             }
             carts.push(newCart)
             await fs.writeFile(this.path, JSON.stringify(carts, null, 2), 'utf-8')
             return newCart
         } catch (error) {
             return `Error al crear un carts ${error}`
-        }
-    }
-    async getCart(limit = null) {
-        try {
-            const carts = await this.readFile();
-    
-            if (!carts || carts.length === 0) {
-                return 'Carrito vacío';
-            }
-    
-            // Si se proporciona un límite, devuelve solo los primeros N carritos
-            if (limit !== null && typeof limit === 'number') {
-                let resultado = carts.slice(0, limit)
-                console.log("RESULT = " + resultado)
-                return resultado;
-            }
-    
-            return carts;
-        } catch (error) {
-            console.error('Error en getCart:', error);
-            return 'Error al obtener carritos';
         }
     }
     async getCartById(cid){
@@ -70,46 +40,6 @@ class CartsManagerFS {
         } catch (error) {
             console.log(error)
         }
-    }
-    async addDataToCart(cid,data){
-        try {
-            const carts = await this.readFile()
-            const cartIdx = carts.findIndex(cart => cart.id=== cid)
-
-            if(cartIdx === -1){
-                return 'no existe el carrito'
-            }else{            
-                for (const prop in data) {
-                    if (data.hasOwnProperty(prop)) {
-                        carts[cartIdx][prop] = data[prop];
-                    }
-                }
-            }
-
-            await fs.writeFile(this.path, JSON.stringify(carts, null, 2), 'utf-8')
-            return carts[cartIdx]
-        } catch (error) {
-           return "error"
-        }
-        
-    }
-    async deleteCart(cid){
-        try {
-            const carts = await this.readFile()
-            const cartIdx = carts.findIndex(cart => cart.id=== cid)
-
-            if(cartIdx === -1){
-                return 'no existe el carrito'
-            }else{   
-                carts.splice(cartIdx, 1);
-            }
-
-            await fs.writeFile(this.path, JSON.stringify(carts, null, 2), 'utf-8')
-            return carts
-        } catch (error) {
-           return "error"
-        }
-        
     }
     async addProductToCart(cid, pid){
         try {

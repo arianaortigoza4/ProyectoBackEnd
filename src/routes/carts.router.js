@@ -18,19 +18,6 @@ router
         }
         // res.send('create carts')
     })
-    .get('/', async (req, res)=>{
-        try {
-            const limit = req.query.limit;
-            const result = await cartsService.getCart(parseInt(limit))
-            console.log(result)
-            res.send({
-                stauts: 'success',
-                payload: result
-            })
-        } catch (error) {
-            res.status(500).send(`Error de server ${error.message}`)
-        }
-    })
     .get('/:cid', async (req, res)=>{
         try {
             const {cid} = req.params
@@ -43,31 +30,6 @@ router
             console.log(error)
         }
         // res.send('get cart')
-    })
-    .put('/:cid', async (req, res)=>{
-        try {
-            const {cid} = req.params
-            const bodyData = req.body;
-            const result = await cartsService.addDataToCart(parseInt(cid),bodyData)
-            res.send({
-                status: 'success',
-                payload: result
-            })
-        } catch (error) {
-            console.log(error)
-        }
-    })
-    .delete('/:cid', async (req, res)=>{
-        try {
-            const {cid} = req.params
-            const result = await cartsService.deleteCart(parseInt(cid))
-            res.send({
-                status: 'success',
-                payload: result
-            })
-        } catch (error) {
-            console.log(error)
-        }
     })
     .post('/:cid/products/:pid', async (req, res)=>{
         try {
