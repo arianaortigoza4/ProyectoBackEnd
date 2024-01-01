@@ -1,4 +1,4 @@
-# Descripción del 4to desafio (corresponde "Solucionado el id duplicado2"):
+# Descripción del 4to desafio (corresponde al commit "Solucionado el id duplicado2"):
 
 # Rutas de Carts
 * Crear un nuevo carrito:
