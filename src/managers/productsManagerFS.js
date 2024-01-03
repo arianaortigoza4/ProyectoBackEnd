@@ -70,10 +70,17 @@ class ProductsManagerFS {
     }
     async addDataToProduct(cid,data){
         try {
-            console.log("DEBUG1")
             const products = await this.readFile()
             const productIdx = products.findIndex(product => product.id=== cid)
-            console.log("DEBUG2")
+
+            if (products.some(p => p.code === data.code)) {
+                throw new Error("El código del producto ya existe");
+            }
+    
+            if (!data.title || !data.description || !data.price || !data.thumbnails || !data.code || !data.stock || !data.status || !data.category) {
+                throw new Error("Todos los campos del producto son obligatorios");
+            }
+
             if(productIdx === -1){
                 return 'no existe el producto'
             }else{            
@@ -87,7 +94,7 @@ class ProductsManagerFS {
             await fs.writeFile(this.path, JSON.stringify(products, null, 2), 'utf-8')
             return products[productIdx]
         } catch (error) {
-           return "error"
+           return console.log(error)
         }
         
     }

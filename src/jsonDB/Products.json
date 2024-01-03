@@ -168,7 +168,7 @@
     "id": 17,
     "title": "Ejemplo17",
     "description": "Descripción de ejemplo",
-    "code": "1234",
+    "code": "1235",
     "price": 19.99,
     "status": true,
     "stock": 50,
@@ -232,6 +232,17 @@
   },
   {
     "id": 23,
+    "title": "",
+    "description": "",
+    "code": 0,
+    "price": 0,
+    "status": true,
+    "stock": 0,
+    "category": "",
+    "thumbnails": ""
+  },
+  {
+    "id": 24,
     "title": "",
     "description": "",
     "code": 0,

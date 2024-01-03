@@ -51,7 +51,6 @@ router
         try {
             const {pid} = req.params
             const bodyData = req.body;
-            console.log("DEBUG11")
             const result = await productsService.addDataToProduct(parseInt(pid),bodyData)
             res.send({
                 status: 'success',
