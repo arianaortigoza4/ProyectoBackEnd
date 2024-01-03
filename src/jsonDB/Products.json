@@ -165,10 +165,10 @@
     "thumbnails": ""
   },
   {
-    "id": 17,
+    "id": "Ejemplo17",
     "title": "Ejemplo17",
     "description": "Descripción de ejemplo",
-    "code": "1235",
+    "code": "1255",
     "price": 19.99,
     "status": true,
     "stock": 50,
@@ -177,14 +177,14 @@
   },
   {
     "id": 18,
-    "title": "",
-    "description": "",
-    "code": 0,
-    "price": 0,
+    "title": "Ejemplo18",
+    "description": "Descripción de ejemplo",
+    "code": "1216",
+    "price": 19.99,
     "status": true,
-    "stock": 0,
-    "category": "",
-    "thumbnails": ""
+    "stock": 50,
+    "category": "EjemploCategory",
+    "thumbnails": "https://ejemplo.com/thumbnail.jpg"
   },
   {
     "id": 19,

@@ -20,13 +20,13 @@ GET http://localhost:8080/api/products?limit=5
 ### Consulta por un id especifico y te devuelve el producto
 GET http://localhost:8080/api/products/17
 ### Consulta por un id especifico y te devuelve el producto
-PUT http://localhost:8080/api/products/17
+PUT http://localhost:8080/api/products/15
 Content-Type: application/json
 
 {
-  "title": "Ejemplo17",
+  "title": "Ejemplo18",
   "description": "Descripción de ejemplo",
-  "code": "1235",
+  "code": "1216",
   "price": 19.99,
   "status": true,
   "stock": 50,

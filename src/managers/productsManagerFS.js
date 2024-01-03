@@ -86,7 +86,7 @@ class ProductsManagerFS {
             }else{            
                 for (const prop in data) {
                     if (data.hasOwnProperty(prop)) {
-                        products[productIdx][prop] = data[prop];
+                        prop != "id" ? products[productIdx][prop] = data[prop] : console.log("NO SE PUEDE CAMBIAR EL ID");
                     }
                 }
             }
