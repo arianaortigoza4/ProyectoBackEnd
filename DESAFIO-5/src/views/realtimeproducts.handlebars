@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Socket.io with Handlebars</title>
+</head>
+<body>
+    {{{body}}}
+
+    <script src="https://cdn.socket.io/4.0.1/socket.io.min.js"></script>
+    <script>
+        const socket = io.connect('http://localhost:8080');
+
+        socket.on('connect', () => {
+            console.log('Conectado al servidor');
+        });
+
+        socket.on('messageLogs', mensajes => {
+            console.log('Mensajes recibidos:', mensajes);
+        });
+
+        function enviarMensaje() {
+            const mensaje = 'Hola, esto es un mensaje desde el cliente';
+            socket.emit('message', mensaje);
+        }
+    </script>
+</body>
+</html>

@@ -251,5 +251,38 @@
     "stock": 0,
     "category": "",
     "thumbnails": ""
+  },
+  {
+    "id": 25,
+    "title": "",
+    "description": "",
+    "code": 0,
+    "price": 0,
+    "status": true,
+    "stock": 0,
+    "category": "",
+    "thumbnails": ""
+  },
+  {
+    "id": 26,
+    "title": "",
+    "description": "",
+    "code": 0,
+    "price": 0,
+    "status": true,
+    "stock": 0,
+    "category": "",
+    "thumbnails": ""
+  },
+  {
+    "id": 27,
+    "title": "",
+    "description": "",
+    "code": 0,
+    "price": 0,
+    "status": true,
+    "stock": 0,
+    "category": "",
+    "thumbnails": ""
   }
 ]
