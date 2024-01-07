@@ -3,6 +3,7 @@ const cartsRouter = require('./routes/carts.router.js')
 const productsRouter = require('./routes/products.router.js')
 const handlebars  = require('express-handlebars')
 const { Server: ServerIO, Server }  = require('socket.io') 
+const fs = require('fs/promises')
 
 const app = express()
 

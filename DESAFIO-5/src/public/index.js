@@ -21,6 +21,7 @@ chatbox.addEventListener('keyup', (evt)=>{
         if(chatbox.value.trim().length > 0){
             socket.emit('message', { user, message: chatbox.value })
             chatbox.value = ''
+            
         }
     }
 })

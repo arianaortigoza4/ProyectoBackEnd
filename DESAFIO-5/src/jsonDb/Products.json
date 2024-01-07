@@ -53,5 +53,16 @@
     "stock": 0,
     "category": "",
     "thumbnails": ""
+  },
+  {
+    "id": 6,
+    "title": "",
+    "description": "",
+    "code": 0,
+    "price": 0,
+    "status": true,
+    "stock": 0,
+    "category": "",
+    "thumbnails": ""
   }
 ]

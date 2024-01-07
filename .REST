@@ -44,5 +44,22 @@ DELETE http://localhost:8080/api/products/6
 
 ##          Rutas de Carts          ##
 
-### Te genera un nuevo producto vacio con un nuevo id
+### Te genera
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ #un nuevo producto vacio con un nuevo id
 GET http://localhost:8080/realtimeproducts
