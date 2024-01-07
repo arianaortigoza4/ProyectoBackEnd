@@ -8,7 +8,7 @@ router
     .post('/', async (req, res)=>{
         try {
             const result = await productsService.createProduct()
-            console.log(result)
+            //console.log(result)
             res.send({
                 stauts: 'success',
                 payload: result
@@ -21,11 +21,11 @@ router
     .get('/', async (req, res)=>{
         try {
             const limit = req.query.limit;
-            console.log("LIMITE = " + limit)
+            //console.log("LIMITE = " + limit)
 
             const result = limit==undefined ? await productsService.getProducts() : await productsService.getProducts(parseInt(limit))
             
-            console.log(result)
+            //console.log(result)
             res.send({
                 stauts: 'success',
                 payload: result

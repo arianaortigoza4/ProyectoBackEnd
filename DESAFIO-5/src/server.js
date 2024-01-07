@@ -24,13 +24,17 @@ app.get('/realtimeproducts', (req,res)=>{
     res.render('realtimeproducts', {} )
 })
 
+
 app.use('/api/carts',    cartsRouter)
-app.use('/api/products', productsRouter)
-
-
-app.get('/api/products', (req,res)=>{
+app.use('/api/products', (req, res, next) => {
+    // Call your custom function here
+    updateJsonClient();
     console.log('UPDATE PRODUCT')
-})
+    // Continue to the next middleware/route handler
+    next();
+});
+app.use('/api/products', productsRouter);
+
 
 const httpServer =  app.listen(8080, ()=>{
     console.log('Escuchando en el puerto 8080')
@@ -40,13 +44,32 @@ const io = new ServerIO(httpServer)
 
 let mensajes = []
 
+async function readFile(path){
+    try {
+        const dataProducts = await fs.readFile(path, 'utf-8') 
+        return JSON.parse(dataProducts)
+    } catch (error) {
+        return []
+    }
+}
+
+async function getProductsByFile(path) {
+    const products = await readFile(path);
+
+    if (!products || products.length === 0) {
+        return 'producto vacío';
+    }
+
+    return products
+}
+
 
 async function updateJsonClient() {
     try {
-        const response = await fetch('http://localhost:8080/api/products');
-        const jsonData = await response.json();
-        //console.log("RESPONSE \n\n\n\n\n" + JSON.stringify(jsonData.payload, null, 2))
+        const response = await getProductsByFile('C:/Users/arian/OneDrive/Documentos/Carrera Full Stack/BackEnd/DESAFIO-5/src/jsonDb/Products.json');
+        const jsonData = JSON.stringify(response, null, 2);
         io.emit('message', jsonData)
+        console.log("\n\n\n\n\n updateJsonClient \n\n\n\n\n" + jsonData)
         
     } catch (error) {
         console.error('Error al obtener datos JSON:', error);
@@ -54,17 +77,18 @@ async function updateJsonClient() {
 }
 
 
-setInterval(updateJsonClient, 300);
+//setInterval(updateJsonClient, 300);
 
 
 
 function cbConnection(socket) {	
     console.log('cliente conectado')
+    updateJsonClient();
     socket.on('message', data => {
         console.log(data)
         mensajes.push(data)
         console.log('MENSAJE RECIBIDO EN EL SERVER')
-        updateJsonClient();
+        //updateJsonClient();
 
         
     })
