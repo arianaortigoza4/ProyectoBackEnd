@@ -24,6 +24,10 @@ app.get('/realtimeproducts', (req,res)=>{
     res.render('realtimeproducts', {} )
 })
 
+app.get('/home', (req,res)=>{
+    res.render('home', {} )
+})
+
 
 app.use('/api/carts',    cartsRouter)
 app.use('/api/products', (req, res, next) => {
@@ -63,10 +67,9 @@ async function getProductsByFile(path) {
     return products
 }
 
-
 async function updateJsonClient() {
     try {
-        const response = await getProductsByFile('C:/Users/arian/OneDrive/Documentos/Carrera Full Stack/BackEnd/DESAFIO-5/src/jsonDb/Products.json');
+        const response = await getProductsByFile('../BackEnd/DESAFIO-5/src/jsonDb/Products.json');
         const jsonData = JSON.stringify(response, null, 2);
         io.emit('message', jsonData)
         console.log("\n\n\n\n\n updateJsonClient \n\n\n\n\n" + jsonData)
