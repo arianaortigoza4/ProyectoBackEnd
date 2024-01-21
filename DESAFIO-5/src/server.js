@@ -1,11 +1,14 @@
 const express = require('express')
 const cartsRouter = require('./routes/carts.router.js')
 const productsRouter = require('./routes/products.router.js')
+const ProductsManagerFS = require('./managers/productsManagerFS')
 const handlebars  = require('express-handlebars')
 const { Server: ServerIO, Server }  = require('socket.io') 
 const fs = require('fs/promises')
 
 const app = express()
+const productsService = new ProductsManagerFS()
+
 
 console.log(__dirname+'/public')
 app.use(express.static(__dirname+'/public'))
@@ -20,12 +23,20 @@ app.set('view engine', 'handlebars')
 app.get('/', (req,res)=>{
     res.render('index', {} )
 })
-app.get('/realtimeproducts', (req,res)=>{
+/*app.get('/realtimeproducts', (req,res)=>{
     res.render('realtimeproducts', {} )
-})
+})*/
 
-app.get('/home', (req,res)=>{
-    res.render('home', {} )
+app.get("/realtimeproducts", async (req, res) => {
+    res.render("realtimeproducts");
+});
+
+app.get('/home', async (req,res)=>{
+    const products = await productsService.getProducts();
+    console.log("products------------------------------");
+    console.log(products);
+
+    res.render("home", {products});
 })
 
 
@@ -48,28 +59,13 @@ const io = new ServerIO(httpServer)
 
 let mensajes = []
 
-async function readFile(path){
-    try {
-        const dataProducts = await fs.readFile(path, 'utf-8') 
-        return JSON.parse(dataProducts)
-    } catch (error) {
-        return []
-    }
-}
 
-async function getProductsByFile(path) {
-    const products = await readFile(path);
 
-    if (!products || products.length === 0) {
-        return 'producto vacío';
-    }
 
-    return products
-}
 
 async function updateJsonClient() {
     try {
-        const response = await getProductsByFile('../BackEnd/DESAFIO-5/src/jsonDb/Products.json');
+        const response = await productsService.getProducts();
         const jsonData = JSON.stringify(response, null, 2);
         io.emit('message', jsonData)
         console.log("\n\n\n\n\n updateJsonClient \n\n\n\n\n" + jsonData)

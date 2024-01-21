@@ -1,11 +1,33 @@
-<h1>Socket.io with Handlebars</h1>
+<h1>Ecommerce</h1>
 <button onclick="sendGetRequest()">Agregar producto</button>
 <form id="deleteForm">
     <label for="productId">ID del Producto a eliminar:</label>
     <input type="text" id="productId" name="productId" required>
     <button type="button" onclick="sendDeleteRequest()">Eliminar Producto</button>
   </form>
+<form id="editarForm">
+    <p>Producto a editar:</p>
+    <input type="number" id="editProductId" name="editProductId" required>
+    <label for="productId">ID:</label>
+    <input type="text" id="editProductTitulo" name="editProductTitulo" required>
+    <label for="productId">Titulo:</label>
+    <input type="text" id="editProductDescripcion" name="editProductDescripcion" required>
+    <label for="productId">Descripcion:</label>
+    <input type="number" id="editProductCode" name="editProductCode" required>
+    <label for="productId">Code:</label>
+    <input type="number" id="editProductPrice" name="editProductPrice" required>
+    <label for="productId">Price:</label>
+    <input type="" id="editProductStatus" name="editProductStatus" required>
+    <label for="productId">Status:</label>
+    <input type="number" id="editProductStock" name="editProductStock" required>
+    <label for="productId">Stock:</label>
+    <input type="text" id="editProductCategory" name="editProductCategory" required>
+    <label for="productId">Category:</label>
+    <input type="" id="editProductThumbnails" name="editProductThumbnails" required>
+    <label for="productId">Thumbnails:</label>
 
+    <button type="button" onclick="editProduct()">Editar Producto</button>
+  </form>
 {{!-- <button onclick="enviarMensaje()">all products</button> --}}
 
 <h2>Datos del archivo JSON:</h2>
@@ -43,5 +65,34 @@
       const response = await fetch(`http://localhost:8080/api/products/${productId}`, { method: 'DELETE' });
       const data = await response.text();
       console.log(data);
+
     }
+
+
+  async function editProduct(){
+    
+    const editarForm = {
+      title:document.getElementById('editProductTitulo').value ,
+      description:document.getElementById('editProductDescripcion').value,
+      code: document.getElementById('editProductCode').value,
+      price: document.getElementById('editProductPrice').value,
+      status:document.getElementById('editProductStatus').value,
+      stock:document.getElementById('editProductStock').value,
+      category: document.getElementById('editProductCategory').value,
+      thumbnails: document.getElementById('editProductThumbnails').value
+    };
+    editID = document.getElementById('editProductId').value
+    const response = await fetch(`http://localhost:8080/api/products/${editID}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json', 
+      },
+      body: JSON.stringify(editarForm), 
+    });
+
+    console.log(response);
+  }
+
+
+
 </script>
