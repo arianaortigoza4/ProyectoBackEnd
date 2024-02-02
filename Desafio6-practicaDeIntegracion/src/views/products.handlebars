@@ -3,7 +3,7 @@
         <h1>products</h1>
         <h2>Carrito : {{cartID}}</h2>
         {{#each products}}
-            <p><strong>id: </strong>{{this.id}} <button onclick="sendRequest('{{cartID}}','{{this.id}}')">Agregar al carrito</button> <p>
+            <p><strong>id: </strong>{{this.id}} <button onclick="sendRequest('{{this.id}}')">Agregar al carrito</button> <p>
             
             {{!-- <p>  <strong>Title: </strong>{{this.title}}  <strong>description: </strong>{{this.description}}  <strong>code: </strong>{{this.code}}  <strong>price: </strong>{{this.price}}  <strong>status: </strong>{{this.status}}  <strong>stock: </strong>{{this.stock}}  <strong>category: </strong>{{this.category}}  <strong>thumbnails: </strong>{{this.thumbnails}}</p> --}}
         {{/each}}
@@ -21,10 +21,9 @@
 
 
 <script>
-    async function sendRequest(cid,pid) {
-      const productId = document.getElementById('productId').value;
-      console.log(`http://localhost:8080/api/carts/${cid}/product/${pid}`);
-      const response = await fetch(`http://localhost:8080/api/carts/${cid}/product/${pid}`, { method: 'POST' });
+    async function sendRequest(pid) {
+      console.log(`http://localhost:8080/api/carts/{{cartID}}/product/${pid}`);
+      const response = await fetch(`http://localhost:8080/api/carts/{{cartID}}/product/${pid}`, { method: 'POST' });
       const data = await response.text();
       console.log(data);
     }

@@ -1,4 +1,5 @@
-const productsModel = require('../models/products.model');
+// const productsModel = require('../models/products.model');
+const { productsModel } = require('../models/products.model')
 
 class ProductManager {
   #products;
@@ -91,9 +92,10 @@ class ProductManager {
   getProductById = async (pid) => {
     try {
       if(!pid) throw new Error('Product ID is required')
+      console.log('Productttttttttttt');
 
       const product = await productsModel.findById(pid).lean().exec()
-      
+      console.log('Productttttttttttt2');
       return product
     } catch (error) {
       throw new Error(`Error trying to get a product by Id: ${error}`)
