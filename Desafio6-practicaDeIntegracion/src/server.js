@@ -13,6 +13,13 @@ const viewsCartRouter = require('./routes/views.cart.routes.js');
 const { userModel } = require('../src/dao/models/users.model')
 const { productsModel } = require('../src/dao/models/products.model')
 
+const MongoStore = require('connect-mongo'); // Importa MongoStore desde connect-mongo
+const session = require('express-session'); // Importa el middleware express-session
+const cookieParser = require('cookie-parser'); // Importa el middleware cookie-parser
+const logger = require('morgan'); // Importa el middleware de registro
+const sessionRouter = require('../src/routes/session.routes.js');
+const { auth } = require('../src/middleware/authentication.js')
+
 
 
 const app = express();
@@ -24,6 +31,23 @@ console.log(__dirname + '/public');
 app.use(express.static(__dirname + '/public'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(logger('dev'))
+app.use(cookieParser())
+
+
+app.use(session({
+    store: MongoStore.create({
+        mongoUrl: 'mongodb+srv://BackEnd:Ari123@cluster0.klfc1nb.mongodb.net/?retryWrites=true&w=majority',
+        mongoOptions: {
+            useNewUrlParser: true,
+            useUnifiedTopology: true,
+        },
+        ttl: 10
+    }), 
+    secret: 's3cr3t0',
+    resave: false,
+    saveUninitialized: false,
+}))
 
 app.engine('handlebars', handlebars.engine());
 app.set('views', __dirname + '/views');
@@ -114,7 +138,7 @@ app.get('/products', async (req, res) => {
 
 
 
-
+app.use('/session', sessionRouter);
 app.use('/api/users', userManager);
 app.use('/api/carts', cartsRouter);
 app.use('/api/products', (req, res, next) => {

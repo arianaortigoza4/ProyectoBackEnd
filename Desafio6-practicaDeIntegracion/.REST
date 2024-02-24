@@ -63,3 +63,46 @@ DELETE http://localhost:8080/api/products/57
 
  #un nuevo producto vacio con un nuevo id
 GET http://localhost:8080/realtimeproducts
+
+
+
+
+
+
+
+
+
+
+###
+POST http://localhost:8080/session/login 
+Content-Type: application/json
+
+{
+  "email": "f@gmail.com", 
+  "password": "123456"
+}
+
+###
+POST http://localhost:8080/session/login 
+Content-Type: application/json
+
+{
+  "email": "ari@gmail.com", 
+  "password": "nose"
+}
+
+
+###
+POST http://localhost:8080/session/register 
+Content-Type: application/json
+
+{
+  "first_name": "nose", 
+  "last_name": "nose2", 
+  "email": "f@gmail.com", 
+  "password": "123456"
+}
+
+
+###
+GET http://localhost:8080/session/logout
