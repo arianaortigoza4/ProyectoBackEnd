@@ -1,4 +1,7 @@
 <h1 id="welcomeMessage"></h1>
+{{!-- Botón de logout --}}
+<button id="logoutButton">Logout</button>
+
 <button onclick="sendGetRequest()">Agregar producto</button>
 <form id="deleteForm">
   <label for="productId">ID del Producto a eliminar:</label>
@@ -67,5 +70,21 @@
         if (name) {
             document.getElementById('welcomeMessage').textContent = 'Bienvenid@, ' + name + '!';
         }
+
+      // Asignar la función de logout al evento click del botón de logout
+      document.getElementById('logoutButton').addEventListener('click', logout);
     });
+
+     // Función para manejar el logout
+    function logout() {
+        // Realizar una solicitud al servidor para cerrar la sesión
+        fetch('/session/logout', { method: 'GET' })
+            .then(response => {
+                // Redirigir a la página de inicio de sesión
+                window.location.href = '/login';
+            })
+            .catch(error => {
+                console.error('Error al cerrar la sesión:', error);
+            });
+    }
 </script>
