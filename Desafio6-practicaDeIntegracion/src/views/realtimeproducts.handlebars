@@ -1,10 +1,14 @@
-<h1>Socket.io with Handlebars</h1>
+<h1 id="welcomeMessage"></h1>
 <button onclick="sendGetRequest()">Agregar producto</button>
 <form id="deleteForm">
-    <label for="productId">ID del Producto a eliminar:</label>
-    <input type="text" id="productId" name="productId" required>
-    <button type="button" onclick="sendDeleteRequest()">Eliminar Producto</button>
-  </form>
+  <label for="productId">ID del Producto a eliminar:</label>
+  <input type="text" id="productId" name="productId" required>
+  <button type="button" onclick="sendDeleteRequest()">Eliminar Producto</button>
+</form>
+
+{{!-- Muestra un mensaje de bienvenida con el nombre del usuario --}}
+
+
 
 {{!-- <button onclick="enviarMensaje()">all products</button> --}}
 
@@ -44,4 +48,24 @@
       const data = await response.text();
       console.log(data);
     }
+
+
+    // Función para obtener el valor de un parámetro de la URL por nombre
+    function getParameterByName(name, url) {
+        if (!url) url = window.location.href;
+        name = name.replace(/[\[\]]/g, '\\$&');
+        var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+            results = regex.exec(url);
+        if (!results) return null;
+        if (!results[2]) return '';
+        return decodeURIComponent(results[2].replace(/\+/g, ' '));
+    }
+
+    // Obtener el nombre de usuario de la URL y mostrar un mensaje de bienvenida si está presente
+    document.addEventListener('DOMContentLoaded', function() {
+        var name = getParameterByName('name');
+        if (name) {
+            document.getElementById('welcomeMessage').textContent = 'Bienvenid@, ' + name + '!';
+        }
+    });
 </script>

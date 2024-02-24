@@ -22,6 +22,7 @@ router.post('/login', async (req, res)=>{
         status: 'success',
         payload: req.session.user,
         message: 'Login correcto',
+        redirectTo: '/realtimeproducts?name=' + encodeURIComponent(req.session.user.name)
     })
 })
 
