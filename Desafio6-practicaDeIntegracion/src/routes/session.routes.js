@@ -25,11 +25,16 @@ router.post('/login', passport.authenticate('login', {failureRedirect: '/api/ses
 
 
 
-router.post('/register', passport.authenticate('register', {failureRedirect: '/api/sessions/failregister'}) ,async (req, res)=>{
+router.post('/register', passport.authenticate('register', {failureRedirect: '/session/failregister'}) ,async (req, res)=>{
     res.status(200).json({
         status: 'success',
         message: 'Usuario creado correctamente'
     })
+})
+
+
+router.get('/failregister', async (req, res) => {
+    res.send({error: 'falla en el register'})
 })
 
 router.get('/logout', async (req, res)=>{
@@ -39,5 +44,14 @@ router.get('/logout', async (req, res)=>{
     })
     res.status(200).redirect('/login')
 })
+
+
+router.get('/github', passport.authenticate('github', {scope:['user:email']}),async (req, res) => {})
+
+router.get('/githubcallback', passport.authenticate('github', {failureRedirect: '/session/login'} ),async (req, res) => {
+    req.session.user = req.user
+    res.redirect('/realtimeproducts')
+})
+
 
 module.exports = router
