@@ -9,7 +9,7 @@ const usersSchema = new mongoose.Schema({
     last_name: String,
     admin: {
         type: Boolean,
-        required: true
+        required: false
     },
     email: {
         type: String,

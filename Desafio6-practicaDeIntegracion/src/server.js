@@ -21,6 +21,9 @@ const sessionRouter = require('../src/routes/session.routes.js');
 const { auth } = require('../src/middleware/authentication.js')
 
 
+const passport = require('passport')
+const { initializePassport } = require('./configPassport/passport.config.js')
+
 
 const app = express();
 const PORT = 3000;
@@ -48,6 +51,10 @@ app.use(session({
     resave: false,
     saveUninitialized: false,
 }))
+
+initializePassport()
+app.use(passport.initialize())
+app.use(passport.session())
 
 app.engine('handlebars', handlebars.engine());
 app.set('views', __dirname + '/views');

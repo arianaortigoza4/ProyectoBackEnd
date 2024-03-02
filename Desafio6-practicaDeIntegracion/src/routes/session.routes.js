@@ -1,22 +1,16 @@
 const { Router } = require('express')
 const {userModel} = require('../dao/models/users.model.js')
+const { createHash, isValidPassword } = require('../utils/hashBcrypt')
+const passport = require('passport')
 
 const router = Router()
 
-router.post('/login', async (req, res)=>{
-    console.log(req.body)
-    const {email, password} = req.body
-     console.log(email, password)
-    // encripar la contraseña que viene del formulario, comparar con la encriptada de la base de datos
-    const user = await userModel.findOne({email: email, password: password})
-
-
-    if (!user) return res.status(401).send({status: 'error', message: 'Usuario o contraseña incorrectos'})
-    // console.log("user : " + user.admin)
+router.post('/login', passport.authenticate('login', {failureRedirect: '/api/sessions/faillogin'}) ,async (req, res)=>{
+    if (!req.user) return res.status(401).send({status: 'error', error: 'creadential invalid'})
     req.session.user = {
-        name: `${user.first_name} ${user.last_name}`,
-        admin: user.admin,
-        email: user.email
+        name: `${req.user.first_name} ${req.user.last_name}`,
+        admin: req.user.admin,
+        email: req.user.email
     }
 
     // console.log("req.session.user.admin : " + req.session.user.admin)
@@ -31,27 +25,7 @@ router.post('/login', async (req, res)=>{
 
 
 
-router.post('/register', async (req, res)=>{ // con basae de datos
-    const { first_name, last_name, admin, email, password } = req.body
-
-
-    let admin_bool = admin === 'on' ? true: false;
-
-    // pregintar si existe el usuario
-    const exists = await userModel.findOne({email})
-
-    if (exists) return res.status(401).send({status: 'error', message: 'El usuario ya existe'})
-
-    const user = {
-        first_name,
-        last_name,
-        admin : admin_bool,
-        email,
-        password
-    }
-    console.log("creando el usuario")
-    let result = await userModel.create(user)
-    console.log("created")
+router.post('/register', passport.authenticate('register', {failureRedirect: '/api/sessions/failregister'}) ,async (req, res)=>{
     res.status(200).json({
         status: 'success',
         message: 'Usuario creado correctamente'
