@@ -1,14 +1,7 @@
-# Implementación de login
-
+# Refactor a nuestro login
 * Consigna
-
-- Ajustar nuestro servidor principal para trabajar con un sistema de login.
-
-* Aspectos a incluir
-
-- Deberá contar con todas las vistas realizadas en el hands on lab, así también como las rutas de router para procesar el registro y el login. 
-- Una vez completado el login, realizar la redirección directamente 
-- Agregar a la vista de productos un mensaje de bienvenida con los datos del usuario
-- Agregar un sistema de roles, de manera que si colocamos en el login como correo adminCoder@coder.com, y la contraseña adminCod3r123, el usuario de la sesión además tenga un campo 
-- Todos los usuarios que no sean admin deberán contar con un rol “usuario”.
-- Implementar botón de “logout” para destruir 
+Con base en el login de nuestro entregable anterior, refactorizar para incluir los nuevos conceptos.
+Aspectos a incluir
+Se deberá contar con un hasheo de contraseña utilizando bcrypt
+Se deberá contar con una implementación de passport, tanto para register como para login.
+Implementar el método de autenticación de GitHub a la vista de login.
