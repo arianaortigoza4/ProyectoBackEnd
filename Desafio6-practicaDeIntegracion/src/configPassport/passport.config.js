@@ -12,19 +12,19 @@ const initializePassport = () => {
         passReqToCallback: true, // accediendo al req
         usernameField: 'email'
     }, async (req, username, password, done) => {
-        const {first_name, last_name, email,admin} = req.body
+        const {first_name, last_name, email, age, role} = req.body
         try {
             let  user = await userModel.findOne({email})
 
-            if (user) return done(null, false)   
-            let admin_bool = admin === 'on' ? true: false;    
+            if (user) return done(null, false)       
 
             let newUser = {
                 first_name, 
                 last_name,
                 email,
-                admin : admin_bool,
-                password: createHash(password)
+                age,
+                password: createHash(password),
+                role
             }   
 
             let result = await userModel.create(newUser)

@@ -32,6 +32,18 @@ router.post('/register', passport.authenticate('register', {failureRedirect: '/s
     })
 })
 
+router.get('/current', (req, res) => {
+    if (!req.session.user) {
+        return res.status(401).json({ status: 'error', error: 'No session found' });
+    }
+
+    res.status(200).json({
+        status: 'success',
+        payload: req.session.user,
+        message: 'Current session data retrieved successfully'
+    });
+});
+
 
 router.get('/failregister', async (req, res) => {
     res.send({error: 'falla en el register'})

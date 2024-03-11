@@ -7,19 +7,26 @@ const usersCollection = 'users'
 const usersSchema = new mongoose.Schema({
     first_name: String,
     last_name: String,
-    admin: {
-        type: Boolean,
-        required: false
-    },
     email: {
         type: String,
         required: true,
         unique: true
     },
+    age: {
+        type: Number,
+        required: false
+    },
     password: {
         type: String,
         required: false
-    }
+    },
+    cart: {
+        type: String,
+        required: false
+    },
+    role: {
+        type: String
+    },
 }) 
 usersSchema.plugin(mongoosePaginate)
 
